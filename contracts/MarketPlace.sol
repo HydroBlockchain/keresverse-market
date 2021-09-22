@@ -3,8 +3,9 @@ pragma solidity ^0.8.1;
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract MarketPlace is ERC1155Holder {
+contract MarketPlace is ERC1155Holder, ReentrancyGuard {
   struct SellOrder {
     IERC1155 token;
     //IERC20 erc20;
@@ -82,7 +83,7 @@ contract MarketPlace is ERC1155Holder {
     orderCounter++;
   }
 
-  function fulfillOrder(uint256 _orderId) external payable {
+  function fulfillOrder(uint256 _orderId) external payable nonReentrant {
     SellOrder storage s = allOrders[_orderId];
     require(!s.fulfilled, "Order has been fulfilled");
     require(s.available, "Order not available");
