@@ -1,0 +1,12 @@
+{
+    "name": "keres skin 0",
+    "description": "First keres skin",
+    "image": "https://ipfs.io/ipfs/QmbsotEU73KNnhrpU6BFPscXoR7c7n3jJeUAci3vfcmm2Y?filename=0",
+    "properties": {
+        "simple_property": "Soldier 1",
+        "rich_property": {
+            "name": "So",
+            "value": "999"
+        }
+    }
+}
