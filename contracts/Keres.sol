@@ -110,6 +110,14 @@ contract Keres is ERC1155, AccessControl {
     _setURI(_newBaseUri);
   }
 
+  //Allow the overlord to grant the role of minter to an account
+  function grantRole(address account)
+    public
+    onlyRole(getRoleAdmin(DEFAULT_ADMIN_ROLE))
+  {
+    _grantRole(MINTER, account);
+  }
+
   function supportsInterface(bytes4 interfaceId)
     public
     view
